@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edukasi Hukum Perceraian dalam Keluarga Islam</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0B0F19',
+                            800: '#111827',
+                            700: '#1a2235',
+                            600: '#1e2d42',
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0B0F19;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 3px;
+        }
+
+        /* ===== NAVBAR ===== */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        #navbar.scrolled {
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 30px rgba(16, 185, 129, 0.08);
+        }
+
+        .nav-link {
+            position: relative;
+            cursor: pointer;
+            padding: 6px 2px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #94a3b8;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #10b981;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #10b981;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* ===== HERO ===== */
+        #hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('perceraian.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.1s ease-out;
+        }
+
+        #hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(11, 15, 25, 0.65) 0%, rgba(11, 15, 25, 0.80) 60%, rgba(11, 15, 25, 1) 100%);
+        }
+
+        #hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 900px;
+        }
+
+        /* ===== BOUNCE ARROW ===== */
+        @keyframes bounce-gentle {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+        }
+
+        .bounce-arrow {
+            animation: bounce-gentle 2s ease-in-out infinite;
+        }
+
+        /* ===== PAGE SECTIONS ===== */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* ===== CARD HOVER ===== */
+        .info-card {
+            background: linear-gradient(135deg, rgba(30, 45, 66, 0.6), rgba(17, 24, 39, 0.8));
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 16px;
+            padding: 28px;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            cursor: default;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        /* ===== SPLIT ARTICLE ANIMATION ===== */
+        .article-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            background: linear-gradient(135deg, rgba(30, 45, 66, 0.6), rgba(17, 24, 39, 0.8));
+            transition: border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.1);
+        }
+
+        .article-card.open {
+            border-color: rgba(16, 185, 129, 0.5);
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.15);
+        }
+
+        .article-top {
+            padding: 24px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-card.open .article-top {
+            transform: translateY(-6px);
+        }
+
+        .article-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .article-card.open .article-detail {
+            max-height: 600px;
+            opacity: 1;
+        }
+
+        .article-detail-inner {
+            padding: 0 24px 24px;
+            transform: translateY(8px);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+        }
+
+        .article-card.open .article-detail-inner {
+            transform: translateY(0);
+        }
+
+        .article-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.5), transparent);
+            margin: 0 24px;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .article-card.open .article-divider {
+            opacity: 1;
+        }
+
+        .article-chevron {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .article-card.open .article-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* ===== FAQ ACCORDION ===== */
+        .faq-item {
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+            opacity: 0;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .faq-chevron {
+            transition: transform 0.35s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* ===== HAMBURGER MENU ===== */
+        #mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: rgba(11, 15, 25, 0.97);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(16, 185, 129, 0.1);
+            padding: 16px 0;
+        }
+
+        #mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-nav-link {
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .mobile-nav-link:hover {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .mobile-nav-link.active {
+            color: #10b981;
+        }
+
+        /* ===== HAMBURGER ICON ===== */
+        .ham-line {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #94a3b8;
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s, background 0.3s;
+        }
+
+        #ham-btn.open .ham-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background: #10b981;
+        }
+
+        #ham-btn.open .ham-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        #ham-btn.open .ham-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background: #10b981;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== GRADIENT TEXT ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981, #34d399, #6ee7b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ===== SECTION BADGE ===== */
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 100px;
+            padding: 4px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #10b981;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        /* ===== TABLE ===== */
+        .iddah-table th {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+            font-weight: 600;
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .iddah-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            vertical-align: top;
+        }
+
+        .iddah-table tr:hover td {
+            background: rgba(16, 185, 129, 0.04);
+        }
+
+        /* ===== MAPS IFRAME WRAPPER ===== */
+        .maps-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* ===== GLOWING BORDER ===== */
+        .glow-border {
+            position: relative;
+        }
+
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.4), transparent, rgba(16, 185, 129, 0.2));
+            z-index: -1;
+        }
+
+        /* ===== TALAK PHASE CARD ===== */
+        .phase-card {
+            background: rgba(17, 24, 39, 0.7);
+            border: 1px solid rgba(16, 185, 129, 0.12);
+            border-radius: 14px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .phase-card:hover {
+            border-color: rgba(16, 185, 129, 0.35);
+            background: rgba(17, 24, 39, 0.9);
+        }
+
+        /* ===== HUKUM BADGE COLORS ===== */
+        .badge-wajib {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #f87171;
+        }
+
+        .badge-sunnah {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: #34d399;
+        }
+
+        .badge-mubah {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+        }
+
+        .badge-makruh {
+            background: rgba(234, 179, 8, 0.15);
+            border-color: rgba(234, 179, 8, 0.3);
+            color: #fbbf24;
+        }
+
+        .badge-haram {
+            background: rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.3);
+            color: #c084fc;
+        }
+    </style>
+</head>
+
+<body class="font-poppins bg-[#0B0F19] text-white">
+
+    <!-- ╔══════════════════════════════╗ -->
+    <!-- ║         NAVBAR               ║ -->
+    <!-- ╚══════════════════════════════╝ -->
+    <nav id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="showPage('beranda')">
+                    <span class="font-bold text-emerald-400">Hukum Perceraian <span
+                            class="font-ragular text-sm text-white hidden sm:block">Dalam Keluarga Islam</span></span>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center gap-6">
+                    <span class="nav-link active" onclick="showPage('beranda')" data-page="beranda">Beranda</span>
+                    <span class="nav-link" onclick="showPage('pengertian')" data-page="pengertian">Pengertian &
+                        Dasar</span>
+                    <span class="nav-link" onclick="showPage('jenis')" data-page="jenis">Jenis Pemutusan</span>
+                    <span class="nav-link" onclick="showPage('gugatan')" data-page="gugatan">Gugatan & Iddah</span>
+                    <span class="nav-link" onclick="showPage('artikel')" data-page="artikel">Artikel</span>
+                    <span class="nav-link" onclick="showPage('faq')" data-page="faq">FAQ</span>
+                    <span class="nav-link" onclick="showPage('profil')" data-page="profil">Profil</span>
+                </div>
+
+                <!-- Hamburger Button -->
+                <button id="ham-btn" class="md:hidden flex flex-col gap-1.5 p-2 rounded-md"
+                    onclick="toggleMobileMenu()">
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                    <span class="ham-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu">
+            <span class="mobile-nav-link active" onclick="showPage('beranda'); closeMobileMenu()" data-page="beranda">
+                Beranda</span>
+            <span class="mobile-nav-link" onclick="showPage('pengertian'); closeMobileMenu()" data-page="pengertian">Pengertian & Dasar Hukum</span>
+            <span class="mobile-nav-link" onclick="showPage('jenis'); closeMobileMenu()" data-page="jenis">Jenis Pemutusan Ikatan</span>
+            <span class="mobile-nav-link" onclick="showPage('gugatan'); closeMobileMenu()" data-page="gugatan">Gugatan, Iddah & Hak</span>
+            <span class="mobile-nav-link" onclick="showPage('artikel'); closeMobileMenu()" data-page="artikel">Artikel Edukasi</span>
+            <span class="mobile-nav-link" onclick="showPage('faq'); closeMobileMenu()" data-page="faq">FAQ</span>
+            <span class="mobile-nav-link" onclick="showPage('profil'); closeMobileMenu()" data-page="profil">
+                Profil</span>
+        </div>
+    </nav>
+
+    <!-- ╔══════════════════════════════╗ -->
+    <!-- ║     HALAMAN 1: BERANDA       ║ -->
+    <!-- ╚══════════════════════════════╝ -->
+    <section id="page-beranda" class="page-section active">
+
+        <!-- Hero Fullscreen -->
+        <div id="hero-section">
+            <div id="hero-bg"></div>
+            <div id="hero-overlay"></div>
+
+            <!-- Hero Content -->
+            <div id="hero-content">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight pt-12 mb-8">
+                    Selamat Datang di Website<br />
+                    <span class="gradient-text">Edukasi & Literasi</span><br />
+                    Hukum Perceraian<br />
+                    <span class="text-white">dalam Keluarga Islam</span>
+                </h1>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+                    <button onclick="showPage('pengertian')"
+                        class="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5">
+                        Mulai Belajar
+                    </button>
+                    <button onclick="document.getElementById('beranda-konten').scrollIntoView({behavior:'smooth'})"
+                        class="px-8 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/20 transition-all duration-300 backdrop-blur-sm">
+                        Selengkapnya
+                    </button>
+                </div>
+
+                <!-- Scroll indicator -->
+                <div class="mt-14 bounce-arrow cursor-pointer"
+                    onclick="document.getElementById('beranda-konten').scrollIntoView({behavior:'smooth'})">
+                    <svg class="w-7 h-7 text-emerald-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content After Scroll -->
+        <div id="beranda-konten" class="max-w-5xl mx-auto px-4 sm:px-6 py-20">
+
+            <!-- Platform description -->
+            <div class="reveal mb-16">
+                <div class="info-card max-w-4xl mx-auto text-center">
+                    <div
+                        class="w-14 h-14 rounded-full bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-7 h-7 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                    </div>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                        Platform ini menyajikan rekonstruksi hukum pemutusan perkawinan (perceraian) secara
+                        komprehensif, memadukan khazanah fiqih klasik dengan hukum positif di Indonesia. Website ini
+                        dirancang khusus sebagai media edukasi digital untuk memberikan pemahaman secara bijak mengenai
+                        hukum perceraian dalam Islam bagi masyarakat umum, pasutri, hingga praktisi hukum.
+                    </p>
+                    <div
+                        class="w-16 h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent mx-auto my-5">
+                    </div>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        Meskipun pernikahan adalah ikatan suci, Islam menyediakan pintu darurat berupa perceraian jika
+                        tujuan mulia pernikahan tidak lagi dapat dipertahankan. Seluruh informasi yang disajikan di
+                        platform ini disusun berdasarkan <span class="text-emerald-400 font-medium">Al-Qur'an,
+                            As-Sunnah, Kompilasi Hukum Islam (KHI)</span>, serta <span
+                            class="text-emerald-400 font-medium">UU Perkawinan</span> guna memberikan literasi hukum
+                        yang valid demi meminimalisir dampak buruk perceraian dan mengutamakan jalan damai <span
+                            class="italic text-emerald-300">(ishlah)</span>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+                <div class="text-center p-5 rounded-xl bg-emerald-500/8 border border-emerald-500/15">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">7</div>
+                    <div class="text-xs text-slate-400 font-medium">Menu Materi</div>
+                </div>
+                <div class="text-center p-5 rounded-xl bg-emerald-500/8 border border-emerald-500/15">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">5</div>
+                    <div class="text-xs text-slate-400 font-medium">Hukum Kondisional</div>
+                </div>
+                <div class="text-center p-5 rounded-xl bg-emerald-500/8 border border-emerald-500/15">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">116</div>
+                    <div class="text-xs text-slate-400 font-medium">Pasal KHI Dibahas</div>
+                </div>
+                <div class="text-center p-5 rounded-xl bg-emerald-500/8 border border-emerald-500/15">
+                    <div class="text-3xl font-bold text-emerald-400 mb-1">4</div>
+                    <div class="text-xs text-slate-400 font-medium">Mazhab Dikaji</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════╗ -->
+    <!-- ║ HALAMAN 2: PENGERTIAN & DASAR   ║ -->
+    <!-- ╚══════════════════════════════════╝ -->
+    <section id="page-pengertian" class="page-section">
+        <div class="pt-24 pb-20 max-w-6xl mx-auto px-4 sm:px-6">
+
+            <!-- Header -->
+            <div class="text-center mb-14 reveal">
+               
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Pengertian, Urgensi, & <span class="gradient-text">Dasar
+                        Hukum</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Memahami hakikat perceraian secara menyeluruh melalui
+                    perspektif fiqih Islam dan hukum positif Indonesia.</p>
+            </div>
+
+            <!-- Definisi -->
+            <div class="reveal mb-14">
+                <div class="info-card">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center flex-shrink-0 mt-1">
+                            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-emerald-400 mb-3">Definisi Perceraian (Talak)</h3>
+                            <p class="text-slate-300 leading-relaxed mb-3">
+                                Secara bahasa (<em>lughatan</em>), kata <strong class="text-white">talak</strong>
+                                berasal dari bahasa Arab <em>ṭalaqa–yaṭliqu–ṭalāqan</em> yang berarti melepaskan atau
+                                menanggalkan ikatan. Secara istilah (<em>iṣṭilāḥan</em>), talak adalah <strong
+                                    class="text-emerald-300">pelepasan ikatan perkawinan oleh suami dengan lafaz
+                                    tertentu atau yang semakna dengannya</strong>, sehingga mengakibatkan terputusnya
+                                hubungan suami istri secara hukum.
+                            </p>
+                            <p class="text-slate-400 leading-relaxed text-sm">
+                                Dalam hukum positif Indonesia, perceraian diatur dalam <strong class="text-white">Pasal
+                                    38 UU No. 1 Tahun 1974 tentang Perkawinan</strong> jo. <strong
+                                    class="text-white">Pasal 113–148 Kompilasi Hukum Islam (KHI)</strong>, yang
+                                mendefinisikan perceraian sebagai putusnya ikatan perkawinan melalui talak suami, gugat
+                                cerai (khuluk) istri, atau putusan pengadilan.
+                            </p>
+                            <div class="mt-4 p-4 bg-emerald-500/8 border border-emerald-500/20 rounded-xl">
+                                <p class="text-emerald-300 text-sm italic">
+                                    "الطَّلاقُ مَرَّتَانِ فَإِمْسَاكٌ بِمَعْرُوفٍ أَوْ تَسْرِيحٌ بِإِحْسَانٍ" —
+                                    Al-Baqarah: 229
+                                </p>
+                                <p class="text-slate-400 text-xs mt-2">"Talak (yang dapat dirujuk) itu dua kali.
+                                    (Setelah itu) boleh rujuk kembali dengan cara yang baik atau menceraikan dengan cara
+                                    yang baik pula."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hukum Kondisional -->
+            <div class="reveal mb-14">
+                <h3 class="text-xl font-bold mb-6 text-center">Hukum Kondisional Perceraian</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <div class="info-card border-l-2 border-red-500/50">
+                        <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 badge-wajib border">WAJIB
+                        </div>
+                        <h4 class="font-semibold text-white mb-2">Talak yang Diwajibkan</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Wajib dilakukan ketika suami melanggar syarat
+                            ta'lik talak yang terucap saat akad nikah, atau ketika terus bersamanya mendatangkan
+                            mudharat yang tidak tertolak bagi istri. Contoh: istri mengalami kekerasan fisik atau psikis
+                            yang berkelanjutan dan tidak ada jalan lain selain cerai.</p>
+                    </div>
+
+                    <div class="info-card border-l-2 border-emerald-500/50">
+                        <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 badge-sunnah border">
+                            SUNNAH</div>
+                        <h4 class="font-semibold text-white mb-2">Talak yang Dianjurkan</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Dianjurkan ketika istri tidak menjaga
+                            kehormatan dan akhlaknya, atau ketika suami tidak mampu menunaikan hak-hak pernikahan
+                            seperti nafkah lahir dan batin, sehingga istri lebih baik diceraikan daripada terus dalam
+                            pernikahan yang tidak harmonis.</p>
+                    </div>
+
+                    <div class="info-card border-l-2 border-blue-500/50">
+                        <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 badge-mubah border">MUBAH
+                        </div>
+                        <h4 class="font-semibold text-white mb-2">Talak yang Dibolehkan</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Diperbolehkan (tidak ada anjuran maupun
+                            larangan) ketika pernikahan tidak mendatangkan manfaat nyata bagi kedua belah pihak, namun
+                            tidak pula mendatangkan mudharat yang signifikan. Pada kondisi ini, keputusan diserahkan
+                            kepada pertimbangan suami.</p>
+                    </div>
+
+                    <div class="info-card border-l-2 border-yellow-500/50">
+                        <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 badge-makruh border">
+                            MAKRUH</div>
+                        <h4 class="font-semibold text-white mb-2">Talak yang Dimakruhkan</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Dimakruhkan ketika pernikahan masih berjalan
+                            baik dan kondisi rumah tangga dalam keadaan harmonis. Nabi SAW bersabda bahwa talak adalah
+                            perkara halal yang paling dibenci oleh Allah SWT, sehingga harus dihindari selama masih ada
+                            jalan lain.</p>
+                    </div>
+
+                    <div class="info-card border-l-2 border-purple-500/50 sm:col-span-2 lg:col-span-1">
+                        <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 badge-haram border">HARAM
+                        </div>
+                        <h4 class="font-semibold text-white mb-2">Talak yang Diharamkan</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">Diharamkan jika: (1) Dijatuhkan saat istri
+                            dalam keadaan haid atau nifas (<em>talak bid'i</em>), (2) Dijatuhkan tanpa alasan syar'i
+                            yang jelas, (3) Bermotivasi menyakiti istri atau merendahkan martabatnya, (4) Dijatuhkan
+                            saat istri suci namun telah dicampuri dalam masa suci tersebut.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Landasan Al-Qur'an -->
+            <div class="reveal mb-14">
+                <h3 class="text-xl font-bold mb-6 text-center">Landasan Hukum Al-Qur'an</h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div
+                        class="p-5 rounded-xl bg-gradient-to-br from-emerald-950/50 to-slate-900/80 border border-emerald-500/20">
+                        <div class="text-emerald-400 font-bold text-sm mb-2">QS. Al-Baqarah: 229</div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic mb-2">"Talak (yang dapat dirujuk) itu
+                            dua kali. (Setelah itu suami boleh) menahan (rujuk) dengan cara yang patut atau melepaskan
+                            dengan cara yang baik."</p>
+                        <p class="text-slate-500 text-xs">Dasar hukum talak raj'i dan batas talak yang dibolehkan</p>
+                    </div>
+                    <div
+                        class="p-5 rounded-xl bg-gradient-to-br from-emerald-950/50 to-slate-900/80 border border-emerald-500/20">
+                        <div class="text-emerald-400 font-bold text-sm mb-2">QS. Al-Baqarah: 230</div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic mb-2">"Kemudian jika si suami
+                            mentalaknya (sesudah talak yang kedua), maka perempuan itu tidak halal lagi baginya hingga
+                            dia kawin dengan suami yang lain."</p>
+                        <p class="text-slate-500 text-xs">Dasar hukum talak ba'in kubra (talak tiga)</p>
+                    </div>
+                    <div
+                        class="p-5 rounded-xl bg-gradient-to-br from-emerald-950/50 to-slate-900/80 border border-emerald-500/20">
+                        <div class="text-emerald-400 font-bold text-sm mb-2">QS. At-Talaq: 1</div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic mb-2">"Hai Nabi, apabila kamu
+                            menceraikan isteri-isterimu maka hendaklah kamu ceraikan mereka pada waktu mereka dapat
+                            (menghadapi) iddahnya."</p>
+                        <p class="text-slate-500 text-xs">Dasar waktu penjatuhan talak yang benar (talak sunni)</p>
+                    </div>
+                    <div
+                        class="p-5 rounded-xl bg-gradient-to-br from-emerald-950/50 to-slate-900/80 border border-emerald-500/20">
+                        <div class="text-emerald-400 font-bold text-sm mb-2">QS. An-Nisa': 35</div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic mb-2">"Dan jika kamu khawatirkan ada
+                            persengketaan antara keduanya, maka kirimlah seorang hakam dari keluarga laki-laki dan
+                            seorang hakam dari keluarga perempuan."</p>
+                        <p class="text-slate-500 text-xs">Dasar hukum mediasi (hakam/syiqaq) sebelum perceraian</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Asas Regulasi Indonesia -->
+            <div class="reveal">
+                <h3 class="text-xl font-bold mb-6 text-center">Asas Regulasi Perceraian di Indonesia</h3>
+                <div class="info-card">
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-white">
+                                    1</div>
+                                <h4 class="font-semibold text-white text-sm">Asas Mempersulit Perceraian</h4>
+                            </div>
+                            <p class="text-slate-400 text-xs leading-relaxed pl-8">Perceraian hanya dapat dilakukan di
+                                hadapan sidang Pengadilan Agama (PA) dan wajib ada alasan yang kuat (Pasal 39 UU
+                                1/1974).</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-white">
+                                    2</div>
+                                <h4 class="font-semibold text-white text-sm">Asas Perlindungan Hak Istri</h4>
+                            </div>
+                            <p class="text-slate-400 text-xs leading-relaxed pl-8">Istri berhak mengajukan gugatan cerai
+                                (fasakh) jika suami melanggar kewajiban, melakukan KDRT, atau tidak memberi nafkah
+                                (Pasal 116 KHI).</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-white">
+                                    3</div>
+                                <h4 class="font-semibold text-white text-sm">Asas Kepentingan Anak</h4>
+                            </div>
+                            <p class="text-slate-400 text-xs leading-relaxed pl-8">Hakim wajib mempertimbangkan
+                                kepentingan terbaik anak dalam memutus perkara perceraian, termasuk hak hadhanah
+                                (pengasuhan) dan nafkah.</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-white">
+                                    4</div>
+                                <h4 class="font-semibold text-white text-sm">Asas Mediasi Wajib</h4>
+                            </div>
+                            <p class="text-slate-400 text-xs leading-relaxed pl-8">Sebelum sidang digelar, PA wajib
+                                mengupayakan mediasi dan mendamaikan pihak yang bersengketa (PERMA No. 1 Tahun 2016).
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-white">
+                                    5</div>
+                                <h4 class="font-semibold text-white text-sm">Asas Keadilan Gender</h4>
+                            </div>
+                            <p class="text-slate-400 text-xs leading-relaxed pl-8">Hukum memberikan hak yang setara bagi
+                                istri untuk mengakhiri pernikahan melalui gugatan cerai atau khuluk tanpa harus menunggu
+                                suami.</p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div
+                                    class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-white">
+                                    6</div>
+                                <h4 class="font-semibold text-white text-sm">Asas Keabsahan Formal</h4>
+                            </div>
+                            <p class="text-slate-400 text-xs leading-relaxed pl-8">Perceraian sah secara hukum positif
+                                hanya setelah ada putusan/penetapan Pengadilan Agama yang berkekuatan hukum tetap.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════╗ -->
+    <!-- ║  HALAMAN 3: JENIS PEMUTUSAN     ║ -->
+    <!-- ╚══════════════════════════════════╝ -->
+    <section id="page-jenis" class="page-section">
+        <div class="pt-24 pb-20 max-w-6xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-14 reveal">
+                
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Jenis Pemutusan <span class="gradient-text">Ikatan
+                        Perkawinan</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Klasifikasi lengkap talak dan khulu' beserta definisi,
+                    syarat, dan akibat hukumnya dalam perspektif fiqih empat mazhab.</p>
+            </div>
+
+            <!-- FASE 1: TALAK -->
+            <div class="reveal mb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">
+                        1</div>
+                    <h3 class="text-xl font-bold">Fase 1 — Klasifikasi Talak dari Suami</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <!-- Talak Raj'i -->
+                    <div class="phase-card">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-emerald-400">Talak Raj'i (رجعي)</h4>
+                            <span
+                                class="px-2 py-0.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full text-xs text-emerald-400">Bisa
+                                Rujuk</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-3">Talak raj'i adalah <strong
+                                class="text-white">talak pertama (1) atau kedua (2)</strong> yang dijatuhkan suami
+                            kepada istri yang telah digauli, di mana suami masih berhak merujuk istrinya selama masa
+                            iddah berlangsung tanpa perlu akad nikah baru.</p>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-400 mt-0.5">✓</span>
+                                <span class="text-slate-400">Rujuk cukup dengan pernyataan atau perbuatan (tidak perlu
+                                    akad baru)</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-400 mt-0.5">✓</span>
+                                <span class="text-slate-400">Masa iddah bagi istri yang haid: 3 quru' (3 kali
+                                    suci/haid)</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-400 mt-0.5">✓</span>
+                                <span class="text-slate-400">Jika iddah habis tanpa rujuk, menjadi talak ba'in
+                                    sughra</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Talak Ba'in -->
+                    <div class="phase-card">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-yellow-400">Talak Ba'in (بائن)</h4>
+                            <span
+                                class="px-2 py-0.5 bg-yellow-500/15 border border-yellow-500/30 rounded-full text-xs text-yellow-400">Akad
+                                Baru</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-3">Talak ba'in terbagi dua: <strong
+                                class="text-white">Sughra</strong> (tidak bisa rujuk tapi bisa nikah baru) dan <strong
+                                class="text-white">Kubra</strong> (talak tiga — tidak bisa nikah ulang sebelum mantan
+                            istri menikah dan bercerai dari suami lain).</p>
+                        <div class="space-y-2 text-xs">
+                            <div class="flex items-start gap-2">
+                                <span class="text-yellow-400 mt-0.5">◈</span>
+                                <span class="text-slate-400"><strong class="text-white">Ba'in Sughra:</strong> talak
+                                    sebelum dukhul, talak atas tebusan (khuluk), atau talak raj'i yang sudah habis masa
+                                    iddahnya</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-yellow-400 mt-0.5">◈</span>
+                                <span class="text-slate-400"><strong class="text-white">Ba'in Kubra:</strong> talak
+                                    ketiga (3). Memerlukan muhallil (laki-laki lain) yang menikahi dengan sah lalu
+                                    menceraikan dengan suka rela</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Talak Sarih -->
+                    <div class="phase-card">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-blue-400">Talak Sarih (صريح)</h4>
+                            <span
+                                class="px-2 py-0.5 bg-blue-500/15 border border-blue-500/30 rounded-full text-xs text-blue-400">Lafaz
+                                Jelas</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-3">Talak yang dijatuhkan menggunakan
+                            kata-kata yang <strong class="text-white">secara eksplisit dan jelas</strong> bermakna
+                            cerai, seperti ucapan: <em>"Aku ceraikan kamu"</em>, <em>"Engkau aku talak"</em>, atau
+                            <em>"Talak bagimu"</em>.</p>
+                        <div class="text-xs text-slate-400 leading-relaxed">
+                            Menurut mayoritas ulama (Syafi'i, Maliki, Hanbali), lafaz sarih jatuh talak meski tanpa
+                            niat. Sedangkan menurut mazhab Hanafi, hanya lafaz tertentu yang bersifat sarih.
+                        </div>
+                    </div>
+
+                    <!-- Talak Kinayah -->
+                    <div class="phase-card">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-purple-400">Talak Kinayah (كناية)</h4>
+                            <span
+                                class="px-2 py-0.5 bg-purple-500/15 border border-purple-500/30 rounded-full text-xs text-purple-400">Kiasan/Niat</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-3">Talak yang diucapkan dengan kata-kata
+                            <strong class="text-white">tidak langsung (kiasan)</strong> yang mengandung makna cerai,
+                            seperti: <em>"Pergilah ke rumah orang tuamu"</em>, <em>"Urus dirimu sendiri"</em>, atau
+                            <em>"Kamu sudah bebas"</em>.</p>
+                        <div class="text-xs text-slate-400 leading-relaxed">
+                            Talak kinayah hanya jatuh jika disertai niat (<em>niyyah</em>) suami untuk menceraikan.
+                            Tanpa niat, lafaz kinayah tidak menyebabkan jatuhnya talak menurut jumhur ulama.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagan Perbandingan Talak -->
+                <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-700/50 overflow-x-auto">
+                    <h4 class="font-semibold text-sm text-emerald-400 mb-4">Bagan Komparasi Jenis Talak</h4>
+                    <table class="iddah-table w-full text-sm min-w-[500px]">
+                        <thead>
+                            <tr>
+                                <th>Jenis Talak</th>
+                                <th>Hitung ke-</th>
+                                <th>Status Rujuk</th>
+                                <th>Cara Kembali</th>
+                                <th>Akibat Hukum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-emerald-300 font-medium">Raj'i (1)</td>
+                                <td>Talak ke-1</td>
+                                <td><span class="text-green-400">✓ Bisa rujuk</span></td>
+                                <td>Pernyataan rujuk dalam iddah</td>
+                                <td>Kembali seutuhnya, hitungan talak tetap 1</td>
+                            </tr>
+                            <tr>
+                                <td class="text-emerald-300 font-medium">Raj'i (2)</td>
+                                <td>Talak ke-2</td>
+                                <td><span class="text-green-400">✓ Bisa rujuk</span></td>
+                                <td>Pernyataan rujuk dalam iddah</td>
+                                <td>Kembali seutuhnya, hitungan talak tetap 2</td>
+                            </tr>
+                            <tr>
+                                <td class="text-yellow-300 font-medium">Ba'in Sughra</td>
+                                <td>Setelah iddah habis</td>
+                                <td><span class="text-yellow-400">△ Akad baru</span></td>
+                                <td>Akad nikah baru + mahar baru</td>
+                                <td>Bebas menikah satu sama lain</td>
+                            </tr>
+                            <tr>
+                                <td class="text-red-300 font-medium">Ba'in Kubra</td>
+                                <td>Talak ke-3</td>
+                                <td><span class="text-red-400">✗ Tidak bisa</span></td>
+                                <td>Muhallil + cerai secara alami</td>
+                                <td>Haram menikah ulang sebelum syarat terpenuhi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- FASE 2: Khulu' & Fasakh -->
+            <div class="reveal">
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-sm">
+                        2</div>
+                    <h3 class="text-xl font-bold">Fase 2 — Khulu' & Fasakh (Hak Istri)</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <!-- Khulu' -->
+                    <div class="info-card border-l-2 border-blue-500/50">
+                        <h4 class="font-bold text-blue-400 mb-2 text-lg">Khulu' (خلع)</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Khulu' adalah <strong class="text-white">perceraian yang diminta oleh istri kepada suami
+                                dengan memberikan tebusan (iwadh)</strong>, biasanya berupa pengembalian mahar atau
+                            sejumlah harta. Khulu' sah dilakukan jika istri merasa tidak mampu menjalankan hak dan
+                            kewajibannya dalam pernikahan.
+                        </p>
+                        <div class="space-y-2 text-xs text-slate-400">
+                            <p><strong class="text-white">Dasar Hukum:</strong> QS. Al-Baqarah: 229 — "...jika istri
+                                khawatir tidak dapat menjalankan hukum-hukum Allah, maka tidak ada dosa atas keduanya
+                                tentang bayaran yang diberikan oleh istri untuk menebus dirinya."</p>
+                            <p><strong class="text-white">Syarat Khulu':</strong> (1) Istri berhak mengajukan, (2) Ada
+                                alasan yang kuat, (3) Ada kesepakatan tebusan, (4) Dilakukan di hadapan PA</p>
+                            <p><strong class="text-white">Akibat Hukum:</strong> Menjadi talak ba'in sughra — suami
+                                tidak berhak merujuk, namun keduanya dapat menikah kembali dengan akad baru</p>
+                        </div>
+                    </div>
+
+                    <!-- Fasakh -->
+                    <div class="info-card border-l-2 border-purple-500/50">
+                        <h4 class="font-bold text-purple-400 mb-2 text-lg">Fasakh (فسخ)</h4>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            Fasakh adalah <strong class="text-white">pembatalan perkawinan yang dilakukan oleh hakim
+                                Pengadilan Agama</strong> atas permintaan salah satu pihak karena adanya cacat atau
+                            kondisi yang menghalangi keberlangsungan pernikahan secara hukum.
+                        </p>
+                        <div class="space-y-2 text-xs text-slate-400">
+                            <p><strong class="text-white">Alasan Fasakh:</strong></p>
+                            <div class="space-y-1 pl-2">
+                                <p>• Suami atau istri murtad dari Islam</p>
+                                <p>• Cacat fisik berat yang tidak diketahui sebelum akad (impoten, penyakit menular
+                                    berat)</p>
+                                <p>• Penipuan identitas dalam akad (pemalsuan data)</p>
+                                <p>• Pernikahan tidak memenuhi rukun dan syarat secara formal</p>
+                                <p>• Suami meninggalkan istri tanpa kabar (mafqud) minimal 2 tahun</p>
+                            </div>
+                            <p><strong class="text-white">Akibat:</strong> Fasakh tidak mengurangi hitungan talak.
+                                Keduanya bebas menikah kembali dengan syarat-syarat baru.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════════╗ -->
+    <!-- ║  HALAMAN 4: GUGATAN, IDDAH & HAK   ║ -->
+    <!-- ╚══════════════════════════════════════╝ -->
+    <section id="page-gugatan" class="page-section">
+        <div class="pt-24 pb-20 max-w-6xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-14 reveal">
+                
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Gugatan, Masa Iddah, & <span class="gradient-text">Hak
+                        Pasca-Cerai</span></h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Panduan prosedural yang komprehensif dari pengajuan gugatan
+                    hingga pemenuhan hak-hak setelah perceraian.</p>
+            </div>
+
+            <!-- FASE 1: GUGATAN -->
+            <div class="reveal mb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-bold text-sm">
+                        1</div>
+                    <h3 class="text-xl font-bold">Prosedur Gugatan Cerai di Pengadilan Agama</h3>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="text-center p-5 rounded-xl bg-slate-900/60 border border-emerald-500/15">
+                        <div
+                            class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto mb-3 text-emerald-400 font-bold">
+                            1</div>
+                        <h4 class="font-semibold text-white text-sm mb-2">Pendaftaran Perkara</h4>
+                        <p class="text-slate-400 text-xs">Mengajukan surat gugatan/permohonan cerai ke Panitera PA yang
+                            berwenang, membayar panjar biaya perkara</p>
+                    </div>
+                    <div class="text-center p-5 rounded-xl bg-slate-900/60 border border-emerald-500/15">
+                        <div
+                            class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto mb-3 text-emerald-400 font-bold">
+                            2</div>
+                        <h4 class="font-semibold text-white text-sm mb-2">Mediasi Wajib</h4>
+                        <p class="text-slate-400 text-xs">PA wajib menunjuk mediator untuk mengupayakan perdamaian
+                            (PERMA 1/2016). Jika gagal, sidang dilanjutkan</p>
+                    </div>
+                    <div class="text-center p-5 rounded-xl bg-slate-900/60 border border-emerald-500/15">
+                        <div
+                            class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto mb-3 text-emerald-400 font-bold">
+                            3</div>
+                        <h4 class="font-semibold text-white text-sm mb-2">Pemeriksaan Sidang</h4>
+                        <p class="text-slate-400 text-xs">Pemeriksaan jawab-menjawab, pembuktian, dan saksi-saksi. Hakim
+                            meneliti alasan-alasan perceraian secara mendalam</p>
+                    </div>
+                    <div class="text-center p-5 rounded-xl bg-slate-900/60 border border-emerald-500/15">
+                        <div
+                            class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mx-auto mb-3 text-emerald-400 font-bold">
+                            4</div>
+                        <h4 class="font-semibold text-white text-sm mb-2">Putusan & Akta Cerai</h4>
+                        <p class="text-slate-400 text-xs">Jika gugatan dikabulkan, hakim menjatuhkan putusan. Setelah
+                            BHT, akta cerai diterbitkan oleh PA</p>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+                    <h4 class="text-emerald-400 font-semibold text-sm mb-2">📌 Alasan-Alasan Perceraian yang Diakui KHI
+                        (Pasal 116)</h4>
+                    <div class="grid sm:grid-cols-2 gap-x-8 gap-y-1">
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Salah satu pihak berbuat zina, pemabuk, pemadat, penjudi</p>
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Salah satu pihak meninggalkan pihak lain selama 2 tahun tanpa izin</p>
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Salah satu pihak dihukum penjara 5 tahun atau lebih</p>
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Salah satu pihak melakukan kekejaman/penganiayaan berat (KDRT)</p>
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Salah satu pihak mendapat cacat badan atau penyakit yang tidak dapat disembuhkan</p>
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Terus-menerus berselisih/bertengkar tanpa harapan hidup rukun (syiqaq)</p>
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Suami melanggar ta'lik talak</p>
+                        <p class="text-slate-400 text-xs flex items-start gap-2"><span class="text-emerald-400">•</span>
+                            Peralihan agama (murtad) yang menyebabkan ketidakrukunan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASE 2: MASA IDDAH -->
+            <div class="reveal mb-12">
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-sm">
+                        2</div>
+                    <h3 class="text-xl font-bold">Masa Iddah — Periode Tunggu Wajib</h3>
+                </div>
+
+                <div class="info-card mb-4">
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        <strong class="text-emerald-400">Iddah</strong> adalah masa tunggu yang wajib dijalani oleh
+                        seorang wanita setelah terjadinya perceraian atau kematian suami, sebelum ia diperbolehkan
+                        menikah lagi. Hikmah iddah antara lain: untuk memastikan kebersihan rahim dari kehamilan,
+                        memberikan kesempatan rujuk, dan menjaga nasab anak.
+                    </p>
+
+                    <div class="overflow-x-auto rounded-xl border border-slate-700/50">
+                        <table class="iddah-table w-full text-sm min-w-[560px]">
+                            <thead>
+                                <tr>
+                                    <th>Kondisi Istri</th>
+                                    <th>Penyebab</th>
+                                    <th>Lama Iddah</th>
+                                    <th>Dasar Hukum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-white font-medium">Masih haid / normal</td>
+                                    <td>Talak / fasakh</td>
+                                    <td><span class="text-emerald-400 font-semibold">3 quru'</span> (3 kali suci atau 3
+                                        kali haid)</td>
+                                    <td>QS. Al-Baqarah: 228</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-white font-medium">Sudah menopause / tidak haid</td>
+                                    <td>Talak / fasakh</td>
+                                    <td><span class="text-emerald-400 font-semibold">3 bulan</span> (90 hari)</td>
+                                    <td>QS. At-Talaq: 4</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-white font-medium">Belum pernah haid (sangat muda)</td>
+                                    <td>Talak / fasakh</td>
+                                    <td><span class="text-emerald-400 font-semibold">3 bulan</span> (90 hari)</td>
+                                    <td>QS. At-Talaq: 4</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-white font-medium">Hamil</td>
+                                    <td>Talak / fasakh</td>
+                                    <td><span class="text-emerald-400 font-semibold">Hingga melahirkan</span></td>
+                                    <td>QS. At-Talaq: 4</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-white font-medium">Belum dicampuri (qabla dukhul)</td>
+                                    <td>Talak</td>
+                                    <td><span class="text-emerald-400 font-semibold">Tidak ada iddah</span></td>
+                                    <td>QS. Al-Ahzab: 49</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-white font-medium">Suami meninggal dunia</td>
+                                    <td>Kematian</td>
+                                    <td><span class="text-emerald-400 font-semibold">4 bulan 10 hari</span> (jika tidak
+                                        hamil)</td>
+                                    <td>QS. Al-Baqarah: 234</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-white font-medium">Suami wafat, istri hamil</td>
+                                    <td>Kematian</td>
+                                    <td><span class="text-emerald-400 font-semibold">Hingga melahirkan</span> (mana yang
+                                        lebih lama)</td>
+                                    <td>QS. At-Talaq: 4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/50">
+                        <h4 class="text-white font-semibold text-sm mb-2">Kewajiban Suami Selama Iddah Raj'i</h4>
+                        <ul class="space-y-1 text-xs text-slate-400">
+                            <li class="flex items-start gap-2"><span class="text-emerald-400">•</span>Menyediakan tempat
+                                tinggal layak bagi istri</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-400">•</span>Memberikan nafkah
+                                (makan, pakaian, kebutuhan pokok)</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-400">•</span>Tidak boleh
+                                mengusir istri dari rumah kecuali ia berbuat keji nyata</li>
+                            <li class="flex items-start gap-2"><span class="text-emerald-400">•</span>Istri wajib
+                                tinggal di rumah selama iddah (tidak boleh keluar tanpa izin)</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-700/50">
+                        <h4 class="text-white font-semibold text-sm mb-2">Larangan Selama Masa Iddah</h4>
+                        <ul class="space-y-1 text-xs text-slate-400">
+                            <li class="flex items-start gap-2"><span class="text-red-400">✗</span>Istri tidak boleh
+                                menerima lamaran secara tegas dari laki-laki lain</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400">✗</span>Istri tidak boleh
+                                menikah kembali sebelum iddah habis</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400">✗</span>Istri iddah kematian
+                                dilarang berhias berlebihan (ihdad)</li>
+                            <li class="flex items-start gap-2"><span class="text-red-400">✗</span>Laki-laki lain tidak
+                                boleh meminang secara terang-terangan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASE 3: HAK PASCA CERAI -->
+            <div class="reveal">
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold text-sm">
+                        3</div>
+                    <h3 class="text-xl font-bold">Hak-Hak Pasca Perceraian</h3>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="info-card">
+                        
+                        <h4 class="font-bold text-white mb-2">Nafkah Iddah</h4>
+                        <p class="text-slate-400 text-sm">Suami wajib memberikan nafkah kepada istri selama masa iddah
+                            talak raj'i dan talak ba'in sughra jika istri tidak hamil. Besarannya disesuaikan kemampuan
+                            suami (Pasal 149 KHI).</p>
+                    </div>
+                    <div class="info-card">
+                        
+                        <h4 class="font-bold text-white mb-2">Mut'ah (Pesangon Cerai)</h4>
+                        <p class="text-slate-400 text-sm">Pemberian dari suami kepada istri yang diceraikan berupa uang
+                            atau barang sebagai penghibur, terutama jika perceraian bukan atas keinginan istri. Hukumnya
+                            wajib menurut mayoritas ulama (QS. Al-Baqarah: 241).</p>
+                    </div>
+                    <div class="info-card">
+                        
+                        <h4 class="font-bold text-white mb-2">Maskan & Kiswah</h4>
+                        <p class="text-slate-400 text-sm">Hak tempat tinggal (maskan) dan pakaian (kiswah) untuk istri
+                            selama masa iddah. Suami wajib menyediakan atau memberikan biaya setara, sesuai kemampuannya
+                            (Pasal 149 b KHI).</p>
+                    </div>
+                    <div class="info-card">
+                        
+                        <h4 class="font-bold text-white mb-2">Nafkah & Hadhanah Anak</h4>
+                        <p class="text-slate-400 text-sm">Ayah (suami yang dicerai) wajib menanggung biaya pemeliharaan
+                            dan pendidikan anak hingga anak mandiri atau dewasa. Hak asuh (hadhanah) anak di bawah 12
+                            tahun pada ibu, di atas 12 tahun anak dapat memilih (Pasal 156 KHI).</p>
+                    </div>
+                    <div class="info-card">
+                        
+                        <h4 class="font-bold text-white mb-2">Pelunasan Mahar Tertunggak</h4>
+                        <p class="text-slate-400 text-sm">Jika sebagian mahar masih belum dilunasi suami (<em>mahr
+                                muajjal</em>), perceraian menjadikan seluruh mahar tersebut jatuh tempo dan wajib segera
+                            dilunasi suami kepada istri.</p>
+                    </div>
+                    <div class="info-card">
+                        
+                        <h4 class="font-bold text-white mb-2">Harta Bersama (Gono-Gini)</h4>
+                        <p class="text-slate-400 text-sm">Harta yang diperoleh selama perkawinan merupakan harta bersama
+                            yang dibagi rata (50:50) antara suami dan istri, kecuali ada perjanjian kawin sebelumnya
+                            yang mengatur lain (Pasal 37 UU 1/1974).</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ╔══════════════════════════════════╗ -->
+    <!-- ║  HALAMAN 5: ARTIKEL EDUKASI     ║ -->
+    <!-- ╚══════════════════════════════════╝ -->
+    <section id="page-artikel" class="page-section">
+        <div class="pt-24 pb-20 max-w-5xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-14 reveal">
+                
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Artikel <span class="gradient-text">Edukasi</span></h2>
+                <p class="text-slate-400 max-w-xl mx-auto">Klik kartu artikel untuk membuka konten lengkap. Setiap
+                    artikel membahas isu perceraian dari sudut pandang yang unik dan kontemporer.</p>
+            </div>
+
+            <div class="space-y-4" id="articles-container">
+
+                <!-- Artikel 1 -->
+                <div class="article-card reveal" onclick="toggleArticle(this)">
+                    <div class="article-top">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">Digital
+                                        & Hukum</span>
+                                    <span class="text-xs text-slate-500">Artikel #01</span>
+                                </div>
+                                <h3 class="font-bold text-white text-base sm:text-lg leading-snug">Kontekstualisasi
+                                    Hukum Perceraian di Era Digital: Tren Gugat Cerai via Aplikasi Medsos</h3>
+                                <p class="text-slate-400 text-sm mt-2">Menggali implikasi hukum dari meningkatnya
+                                    penggunaan media sosial dalam proses perceraian di Indonesia.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <svg class="article-chevron w-5 h-5 text-emerald-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-divider"></div>
+                    <div class="article-detail">
+                        <div class="article-detail-inner">
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Perkembangan teknologi informasi, khususnya media sosial, telah membawa perubahan
+                                signifikan dalam tatanan sosial masyarakat Indonesia, termasuk dalam konteks perceraian.
+                                Data Badan Peradilan Agama (BADILAG) Mahkamah Agung mencatat peningkatan gugat cerai
+                                yang berkorelasi dengan konflik rumah tangga bermula dari penggunaan media sosial,
+                                seperti perselingkuhan yang berawal dari Facebook, Instagram, hingga WhatsApp.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Pertanyaan hukum yang muncul kemudian adalah: <strong class="text-white">apakah
+                                    pengiriman pesan talak melalui media sosial (WhatsApp, SMS, atau DM Instagram) dapat
+                                    dikategorikan sebagai talak yang sah secara hukum Islam?</strong>
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Dari sisi fiqih, para ulama kontemporer seperti Majelis Ulama Indonesia (MUI) melalui
+                                Fatwa No. 56 Tahun 2021 menetapkan bahwa talak melalui tulisan (termasuk pesan digital)
+                                pada prinsipnya sah jika memenuhi syarat: (1) berasal dari suami yang cakap hukum, (2)
+                                lafaz yang digunakan jelas bermakna cerai (talak sarih), dan (3) ada niat yang tulus
+                                dari suami. Namun, dari sisi hukum positif, talak digital ini <strong
+                                    class="text-white">tidak sah secara administratif</strong> karena perceraian di
+                                Indonesia wajib dilakukan di hadapan sidang Pengadilan Agama (Pasal 39 UU No. 1 Tahun
+                                1974).
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Fenomena ini menciptakan dualisme hukum yang mengkhawatirkan: seorang istri yang
+                                menerima pesan talak via WhatsApp bisa jadi dianggap telah bercerai secara agama, namun
+                                secara negara pernikahannya masih tercatat. Kondisi ini berpotensi menimbulkan masalah
+                                hukum bagi status anak, hak waris, dan hak nafkah.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Kesimpulan: Masyarakat perlu dibekali literasi hukum bahwa perceraian — seberapapun sah
+                                secara agama — harus tetap dicatatkan dan diproses melalui Pengadilan Agama agar
+                                memiliki kekuatan hukum yang melindungi hak-hak semua pihak, terutama perempuan dan
+                                anak-anak.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artikel 2 -->
+                <div class="article-card reveal" onclick="toggleArticle(this)">
+                    <div class="article-top">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-bold text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2 py-0.5 rounded-full">Analisis
+                                        KHI</span>
+                                    <span class="text-xs text-slate-500">Artikel #02</span>
+                                </div>
+                                <h3 class="font-bold text-white text-base sm:text-lg leading-snug">Menakar Alasan Syar'i
+                                    Perceraian: Bedah Pasal 116 Kompilasi Hukum Islam (KHI)</h3>
+                                <p class="text-slate-400 text-sm mt-2">Analisis kritis terhadap delapan alasan
+                                    perceraian yang diakui KHI dan relevansinya dengan prinsip maqashid syariah.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <svg class="article-chevron w-5 h-5 text-blue-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-divider"></div>
+                    <div class="article-detail">
+                        <div class="article-detail-inner">
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Pasal 116 Kompilasi Hukum Islam (KHI) merupakan pasal sentral yang menjadi <em>lex
+                                    specialis</em> bagi umat Islam Indonesia dalam urusan perceraian. Pasal ini secara
+                                limitatif menyebutkan delapan alasan yang dapat dijadikan dasar pengajuan cerai di
+                                Pengadilan Agama. Bedah komprehensif terhadap pasal ini penting agar masyarakat tidak
+                                salah dalam memahami "alasan yang cukup" untuk bercerai.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Dari delapan alasan tersebut, tiga alasan yang paling banyak digunakan dalam praktik
+                                persidangan adalah: <strong class="text-white">(1) Syiqaq (terus menerus
+                                    berselisih)</strong>, yang tercatat menjadi alasan mayoritas gugatan cerai di
+                                Indonesia, <strong class="text-white">(2) Penelantaran (tidak memberi nafkah)</strong>,
+                                dan <strong class="text-white">(3) Kekerasan Dalam Rumah Tangga (KDRT)</strong> yang
+                                semakin meningkat kasusnya.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Dalam tinjauan maqashid syariah (tujuan-tujuan hukum Islam), kedelapan alasan tersebut
+                                sejatinya bermuara pada satu prinsip: <em>daf'ul mafasid muqaddam 'ala jalbil
+                                    mashalih</em> — menolak kemudaratan lebih diutamakan daripada mendatangkan
+                                kemashlahatan. Artinya, perceraian diizinkan ketika melanjutkan pernikahan justru akan
+                                mendatangkan bahaya yang lebih besar bagi jiwa, akal, atau kehormatan salah satu atau
+                                kedua pihak.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Kritik konstruktif terhadap Pasal 116 KHI: rumusan pasal ini perlu diperkuat dengan
+                                instrumen pembuktian yang lebih modern, terutama untuk mengatasi kesulitan pembuktian
+                                dalam kasus KDRT psikologis, penelantaran ekonomi, dan perselingkuhan digital — kondisi
+                                yang marak di era kontemporer namun belum secara eksplisit terakomodasi dalam redaksi
+                                KHI yang lahir di tahun 1991.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artikel 3 -->
+                <div class="article-card reveal" onclick="toggleArticle(this)">
+                    <div class="article-top">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-bold text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2 py-0.5 rounded-full">Hak
+                                        Perempuan</span>
+                                    <span class="text-xs text-slate-500">Artikel #03</span>
+                                </div>
+                                <h3 class="font-bold text-white text-base sm:text-lg leading-snug">Hak-Hak Perempuan
+                                    Pasca-Perceraian yang Dilindungi oleh Hukum Positif Indonesia</h3>
+                                <p class="text-slate-400 text-sm mt-2">Pemetaan hak-hak istri yang diceraikan dari aspek
+                                    nafkah iddah, mut'ah, hingga harta gono-gini.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <svg class="article-chevron w-5 h-5 text-purple-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-divider"></div>
+                    <div class="article-detail">
+                        <div class="article-detail-inner">
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Islam dan hukum positif Indonesia sejatinya memberikan perlindungan hak yang
+                                komprehensif bagi perempuan yang mengalami perceraian. Sayangnya, banyak perempuan yang
+                                belum mengetahui hak-haknya, sehingga seringkali hak tersebut tidak diperjuangkan di
+                                pengadilan. Artikel ini merangkum hak-hak tersebut secara sistematis.
+                            </p>
+                            <div class="space-y-3 mb-4">
+                                <div class="p-3 bg-slate-900/60 rounded-lg">
+                                    <p class="text-white text-xs font-semibold mb-1">1. Nafkah Iddah (Pasal 149a KHI)
+                                    </p>
+                                    <p class="text-slate-400 text-xs">Wajib diberikan suami selama masa iddah talak
+                                        raj'i dan ba'in, termasuk jika istri hamil. Jumlahnya proporsional dengan
+                                        kemampuan suami dan ditetapkan hakim jika tidak disepakati.</p>
+                                </div>
+                                <div class="p-3 bg-slate-900/60 rounded-lg">
+                                    <p class="text-white text-xs font-semibold mb-1">2. Mut'ah/Pesangon Perceraian
+                                        (Pasal 149f KHI)</p>
+                                    <p class="text-slate-400 text-xs">Pemberian uang atau barang dari suami yang
+                                        menceraikan istri sebagai bentuk penghargaan atas jasa dan pengorbanan istri
+                                        selama pernikahan. Hukumnya wajib, terutama jika perceraian atas kehendak suami.
+                                    </p>
+                                </div>
+                                <div class="p-3 bg-slate-900/60 rounded-lg">
+                                    <p class="text-white text-xs font-semibold mb-1">3. Harta Gono-Gini (Pasal 157 KHI)
+                                    </p>
+                                    <p class="text-slate-400 text-xs">Harta bersama dibagi menurut hukum masing-masing
+                                        agama/kepercayaan. Bagi umat Islam, pembagian dilakukan secara adil dengan
+                                        mempertimbangkan kontribusi masing-masing pihak.</p>
+                                </div>
+                                <div class="p-3 bg-slate-900/60 rounded-lg">
+                                    <p class="text-white text-xs font-semibold mb-1">4. Hak Hadhanah (Pasal 105 KHI)</p>
+                                    <p class="text-slate-400 text-xs">Ibu berhak mengasuh anak di bawah umur 12 tahun.
+                                        Setelah 12 tahun, anak dapat memilih antara ayah atau ibu. Namun, biaya tetap
+                                        dibebankan kepada ayah.</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Hambatan terbesar pemenuhan hak-hak ini adalah lemahnya eksekusi putusan pengadilan.
+                                Banyak suami yang diwajibkan membayar nafkah iddah dan mut'ah, namun tidak
+                                melaksanakannya. Untuk itu, istri perlu mengajukan permohonan eksekusi ke Pengadilan
+                                Agama dan didampingi oleh kuasa hukum atau advokat yang memahami hukum keluarga Islam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artikel 4 -->
+                <div class="article-card reveal" onclick="toggleArticle(this)">
+                    <div class="article-top">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2 py-0.5 rounded-full">Empat
+                                        Mazhab</span>
+                                    <span class="text-xs text-slate-500">Artikel #04</span>
+                                </div>
+                                <h3 class="font-bold text-white text-base sm:text-lg leading-snug">Kupas Tuntas Fenomena
+                                    "Talak Tiga Sekaligus" dalam Tinjauan Empat Mazhab</h3>
+                                <p class="text-slate-400 text-sm mt-2">Perbedaan pendapat ulama empat mazhab tentang
+                                    status hukum talak tiga yang diucapkan sekaligus dalam satu waktu.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <svg class="article-chevron w-5 h-5 text-yellow-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-divider"></div>
+                    <div class="article-detail">
+                        <div class="article-detail-inner">
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                "Talak tiga sekaligus" (<em>al-talaq al-mujtama'</em>) — yakni suami mengucapkan "Saya
+                                talak kamu tiga" atau "Talak, talak, talak" dalam satu majelis — merupakan salah satu
+                                isu fiqih yang paling kontroversial. Para ulama dari empat mazhab utama memiliki
+                                pandangan yang berbeda:
+                            </p>
+                            <div class="grid sm:grid-cols-2 gap-3 mb-4">
+                                <div class="p-3 rounded-lg bg-slate-900/70 border border-slate-700/50">
+                                    <p class="text-emerald-400 font-bold text-xs mb-1">Mazhab Syafi'i & Maliki & Hanbali
+                                    </p>
+                                    <p class="text-slate-400 text-xs leading-relaxed">Talak tiga sekaligus jatuh sebagai
+                                        talak tiga (ba'in kubra). Istri tidak halal bagi suami sampai menikah dengan
+                                        laki-laki lain dan bercerai. Ini adalah pendapat mayoritas ulama (jumhur).</p>
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-900/70 border border-slate-700/50">
+                                    <p class="text-blue-400 font-bold text-xs mb-1">Mazhab Hanafi</p>
+                                    <p class="text-slate-400 text-xs leading-relaxed">Talak tiga sekaligus jatuh sebagai
+                                        talak tiga. Namun, perbuatan ini termasuk <em>bid'ah</em> (talak yang diharamkan
+                                        caranya) karena melanggar sunnah penjatuhan talak secara bertahap.</p>
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-900/70 border border-slate-700/50">
+                                    <p class="text-yellow-400 font-bold text-xs mb-1">Pendapat Ibn Taimiyah & Ibn Qayyim
+                                    </p>
+                                    <p class="text-slate-400 text-xs leading-relaxed">Talak tiga sekaligus hanya jatuh
+                                        sebagai talak satu. Mereka berdalil dengan hadits Ibnu Abbas bahwa di zaman Nabi
+                                        dan Abu Bakar, talak tiga sekaligus dihitung satu.</p>
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-900/70 border border-slate-700/50">
+                                    <p class="text-purple-400 font-bold text-xs mb-1">Fatwa MUI & Praktik PA Indonesia
+                                    </p>
+                                    <p class="text-slate-400 text-xs leading-relaxed">Pengadilan Agama di Indonesia
+                                        umumnya mengikuti pendapat jumhur (talak tiga jatuh sebagai talak ba'in kubra).
+                                        Namun, hakim memiliki kebebasan ijtihad dalam kasus tertentu.</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Perbedaan pendapat ini menggarisbawahi pentingnya bimbingan dari ulama atau hakim yang
+                                kompeten sebelum seorang suami menjatuhkan talak, terutama dalam kondisi emosional.
+                                Talak yang diucapkan dalam kemarahan besar tanpa disadari oleh suami dapat membawa
+                                akibat hukum yang sangat serius bagi kedua belah pihak.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artikel 5 -->
+                <div class="article-card reveal" onclick="toggleArticle(this)">
+                    <div class="article-top">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-bold text-red-400 bg-red-500/10 border border-red-500/20 px-2 py-0.5 rounded-full">Perlindungan
+                                        Anak</span>
+                                    <span class="text-xs text-slate-500">Artikel #05</span>
+                                </div>
+                                <h3 class="font-bold text-white text-base sm:text-lg leading-snug">Perlindungan Nafkah
+                                    Anak Pasca Perceraian: Tantangan dan Solusi Hukum Eksekusi</h3>
+                                <p class="text-slate-400 text-sm mt-2">Mengupas kesenjangan antara putusan pengadilan
+                                    tentang nafkah anak dan realita pelaksanaannya di lapangan.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <svg class="article-chevron w-5 h-5 text-red-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-divider"></div>
+                    <div class="article-detail">
+                        <div class="article-detail-inner">
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Salah satu dampak paling nyata dan menyedihkan dari perceraian adalah terbengkalainya
+                                nafkah anak. Data menunjukkan bahwa sebagian besar putusan pengadilan yang mewajibkan
+                                ayah membayar nafkah anak tidak dieksekusi secara penuh. Anak-anak menjadi korban yang
+                                paling terdampak dari ketidakpatuhan hukum ini.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Secara hukum Islam, kewajiban nafkah anak (<em>nafaqah al-walad</em>) bersumber dari
+                                hubungan darah (nasab) ayah dengan anak, bukan dari hubungan pernikahan ayah dengan ibu.
+                                Artinya, <strong class="text-white">meski pernikahan telah putus, kewajiban nafkah anak
+                                    dari pihak ayah tidak pernah gugur</strong> hingga anak mencapai usia baligh dan
+                                mandiri, atau hingga anak perempuan menikah.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Tantangan eksekusi yang kerap terjadi di lapangan antara lain: (1) suami pindah domisili
+                                dan sulit dilacak, (2) aset suami tidak tercatat sehingga sita eksekusi sulit dilakukan,
+                                (3) ketidaktahuan ibu tentang prosedur eksekusi putusan, dan (4) tidak adanya mekanisme
+                                pemotongan gaji otomatis seperti di negara-negara maju.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Solusi yang direkomendasikan: ibu (pemegang hak asuh) perlu segera mendaftarkan putusan
+                                PA ke Pengadilan Agama untuk eksekusi jika ayah ingkar janji. Selain itu, pemerintah
+                                perlu merumuskan mekanisme nafkah anak melalui skema jaminan sosial atau lembaga amil
+                                yang dapat menjembatani ketika ayah tidak kooperatif, sebagaimana telah diterapkan di
+                                Malaysia dan Brunei.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artikel 6 -->
+                <div class="article-card reveal" onclick="toggleArticle(this)">
+                    <div class="article-top">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span
+                                        class="text-xs font-bold text-teal-400 bg-teal-500/10 border border-teal-500/20 px-2 py-0.5 rounded-full">Mediasi
+                                        Islam</span>
+                                    <span class="text-xs text-slate-500">Artikel #06</span>
+                                </div>
+                                <h3 class="font-bold text-white text-base sm:text-lg leading-snug">Memahami Konsep
+                                    Syiqaq dan Peran Hakam (Mediator) dalam Membendung Perceraian</h3>
+                                <p class="text-slate-400 text-sm mt-2">Kajian mendalam tentang lembaga mediasi syiqaq
+                                    dan hakam sebagai benteng terakhir sebelum terjadinya perceraian.</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <svg class="article-chevron w-5 h-5 text-teal-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="article-divider"></div>
+                    <div class="article-detail">
+                        <div class="article-detail-inner">
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                <strong class="text-white">Syiqaq</strong> (<em>شقاق</em>) dalam terminologi fiqih
+                                berarti perselisihan atau persengketaan yang terus-menerus antara suami dan istri yang
+                                sukar untuk didamaikan. Kondisi syiqaq yang berkepanjangan adalah salah satu alasan
+                                perceraian yang paling sering diajukan ke Pengadilan Agama di Indonesia dan termasuk
+                                dalam Pasal 116 huruf f KHI.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Solusi yang diperintahkan Al-Qur'an dalam QS. An-Nisa': 35 ketika terjadi syiqaq adalah
+                                mengutus <strong class="text-white">hakam</strong> — seorang mediator yang diambil dari
+                                keluarga suami dan seorang lagi dari keluarga istri. Para hakam ini bertugas
+                                menginvestigasi akar masalah, mendengarkan keluhan kedua pihak, dan berupaya merumuskan
+                                solusi damai (<em>ishlah</em>) yang disepakati bersama.
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                                Dalam konteks hukum Indonesia, lembaga hakam ini diadopsi dalam sistem mediasi wajib
+                                Pengadilan Agama. Namun, terdapat perbedaan: dalam fiqih, hakam adalah anggota keluarga
+                                yang dipercaya, sedangkan mediator PA bisa juga dari pihak luar (advokat atau mediator
+                                bersertifikat).
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Penelitian menunjukkan bahwa keberhasilan mediasi di PA Indonesia masih sangat rendah —
+                                sekitar 2–5% saja. Hal ini disebabkan antara lain karena: para pihak umumnya sudah dalam
+                                kondisi konflik yang dalam ketika memasuki ruang mediasi, proses mediasi dianggap
+                                sebagai formalitas belaka, dan mediator tidak selalu memiliki kompetensi dalam memahami
+                                dinamika konflik rumah tangga yang kompleks. Peningkatan kualitas hakam dan mediator
+                                menjadi kunci penting dalam menekan angka perceraian.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ╔══════════════════════╗ -->
+    <!-- ║  HALAMAN 6: FAQ     ║ -->
+    <!-- ╚══════════════════════╝ -->
+    <section id="page-faq" class="page-section">
+        <div class="pt-24 pb-20 max-w-3xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-14 reveal">
+              
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Pertanyaan yang Sering <span
+                        class="gradient-text">Ditanyakan</span></h2>
+                <p class="text-slate-400 max-w-xl mx-auto">Jawaban atas pertanyaan umum seputar hukum perceraian dalam
+                    Islam dan regulasi Indonesia.</p>
+            </div>
+
+            <div class="space-y-1 reveal">
+
+                <!-- FAQ 1 -->
+                <div class="faq-item rounded-t-xl overflow-hidden" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors">
+                        <span class="font-semibold text-white text-sm sm:text-base">Apakah perceraian yang dilakukan di
+                            luar Pengadilan Agama sah secara hukum di Indonesia?</span>
+                        <svg class="faq-chevron w-5 h-5 text-emerald-400 flex-shrink-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-5 pb-5">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                Dari sisi <strong class="text-white">hukum agama Islam</strong>, talak yang diucapkan
+                                suami secara langsung kepada istrinya (meskipun di luar pengadilan) dapat sah sepanjang
+                                memenuhi syarat: suami berakal dan baligh, tidak dalam paksaan, menggunakan lafaz yang
+                                jelas atau bermaksud cerai, dan tidak dalam keadaan haid istri.
+                            </p>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                Namun, dari sisi <strong class="text-white">hukum positif Indonesia</strong> berdasarkan
+                                Pasal 39 UU No. 1 Tahun 1974 jo. Pasal 115 KHI, perceraian hanya sah dan diakui negara
+                                apabila dilakukan <em>di hadapan sidang Pengadilan Agama</em>. Perceraian di luar PA
+                                tidak memiliki kekuatan hukum yang diakui negara.
+                            </p>
+                            <div class="p-3 bg-yellow-500/8 border border-yellow-500/20 rounded-lg">
+                                <p class="text-yellow-300 text-xs"><strong>Konsekuensi Praktis:</strong> Tanpa akta
+                                    cerai dari PA, seseorang secara administratif masih berstatus menikah, yang dapat
+                                    berdampak pada hak waris, status anak di akta lahir, dan kemungkinan dianggap
+                                    melakukan bigami jika menikah lagi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item overflow-hidden" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors">
+                        <span class="font-semibold text-white text-sm sm:text-base">Bolehkah istri yang diceraikan
+                            langsung menikah lagi setelah menandatangani surat cerai?</span>
+                        <svg class="faq-chevron w-5 h-5 text-emerald-400 flex-shrink-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-5 pb-5">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                <strong class="text-white">Tidak boleh.</strong> Seorang wanita yang baru diceraikan
+                                wajib menjalani masa iddah terlebih dahulu sebelum diperbolehkan menikah dengan
+                                laki-laki lain. Larangan ini bersifat mutlak dan memiliki dua sumber hukum sekaligus.
+                            </p>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                Dalam <strong class="text-white">hukum Islam</strong>, iddah bagi wanita yang diceraikan
+                                dan masih haid adalah tiga kali quru' (sekitar 3 bulan). Selama masa ini, wanita
+                                dilarang menerima lamaran atau menikah dengan laki-laki lain.
+                            </p>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Dalam <strong class="text-white">hukum positif Indonesia</strong>, Pasal 39 PP No. 9
+                                Tahun 1975 juga mengatur masa tunggu (<em>waiting period</em>) yang senada dengan iddah
+                                Islam. Menikah sebelum masa tunggu habis dapat mengakibatkan pernikahan baru tersebut
+                                dianggap tidak sah atau dapat dibatalkan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item overflow-hidden" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors">
+                        <span class="font-semibold text-white text-sm sm:text-base">Apakah suami yang sedang marah besar
+                            sah talaknya jika mengucapkan kata cerai?</span>
+                        <svg class="faq-chevron w-5 h-5 text-emerald-400 flex-shrink-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-5 pb-5">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                Ini adalah salah satu pertanyaan paling sering diajukan dan memiliki jawaban yang
+                                bertingkat berdasarkan tingkat kemarahan (<em>ghadhab</em>):
+                            </p>
+                            <div class="space-y-2 mb-3">
+                                <div class="p-3 rounded-lg bg-slate-900/60">
+                                    <p class="text-white text-xs font-bold mb-1">Marah Ringan (Ghadhab Khafif)</p>
+                                    <p class="text-slate-400 text-xs">Marah biasa yang masih dalam batas normal — akal
+                                        tetap terkontrol, memahami apa yang diucapkan. <strong class="text-white">Talak
+                                            jatuh.</strong></p>
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-900/60">
+                                    <p class="text-white text-xs font-bold mb-1">Marah Sangat Berat (Ghadhab Syadid)</p>
+                                    <p class="text-slate-400 text-xs">Marah yang sangat ekstrem hingga suami tidak dapat
+                                        mengendalikan diri, tidak menyadari apa yang diucapkan, bahkan tidak ingat apa
+                                        yang terjadi. Sebagian ulama — termasuk Ibn Qayyim Al-Jauziyyah — berpendapat
+                                        <strong class="text-white">talak tidak jatuh</strong> dalam kondisi ini karena
+                                        hilangnya unsur kesengajaan (<em>qasd</em>).</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-400 text-xs">Kasus konkret perlu dikonsultasikan kepada ulama atau
+                                hakim PA yang kompeten untuk menilai kondisi yang sebenarnya terjadi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item overflow-hidden" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors">
+                        <span class="font-semibold text-white text-sm sm:text-base">Bagaimana jika suami tidak mau
+                            menandatangani surat cerai, apakah istri tetap bisa bercerai?</span>
+                        <svg class="faq-chevron w-5 h-5 text-emerald-400 flex-shrink-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-5 pb-5">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                <strong class="text-white">Ya, istri tetap dapat bercerai.</strong> Sistem hukum
+                                Indonesia memberikan jalan kepada istri untuk mengakhiri pernikahan meski suami tidak
+                                kooperatif, melalui dua mekanisme:
+                            </p>
+                            <div class="space-y-2 mb-3">
+                                <div class="p-3 rounded-lg bg-slate-900/60">
+                                    <p class="text-white text-xs font-bold mb-1">1. Gugatan Cerai (Fasakh/Cerai Gugat)
+                                    </p>
+                                    <p class="text-slate-400 text-xs">Istri mengajukan gugatan cerai ke Pengadilan Agama
+                                        dengan menyertakan alasan-alasan yang sah (Pasal 116 KHI). Meski suami tidak
+                                        hadir atau menolak, hakim dapat menjatuhkan putusan verstek (putusan tanpa
+                                        kehadiran tergugat) setelah memanggil resmi beberapa kali.</p>
+                                </div>
+                                <div class="p-3 rounded-lg bg-slate-900/60">
+                                    <p class="text-white text-xs font-bold mb-1">2. Khulu' (Cerai dengan Tebusan)</p>
+                                    <p class="text-slate-400 text-xs">Jika suami bersedia menerima tebusan, istri dapat
+                                        mengajukan khuluk — menawarkan pengembalian mahar atau kompensasi lain agar
+                                        suami mau menceraikannya. Prosesnya difasilitasi oleh PA.</p>
+                                </div>
+                            </div>
+                            <div class="p-3 bg-emerald-500/8 border border-emerald-500/20 rounded-lg">
+                                <p class="text-emerald-300 text-xs"><strong>Catatan Penting:</strong> Tidak ada alasan
+                                    bagi perempuan untuk "terjebak" dalam pernikahan yang menyakitkan hanya karena suami
+                                    tidak mau cerai. Hukum Islam dan hukum positif Indonesia sama-sama menyediakan jalur
+                                    keluar yang legal bagi istri.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item overflow-hidden" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors">
+                        <span class="font-semibold text-white text-sm sm:text-base">Apakah anak hasil pernikahan yang
+                            bercerai kehilangan hak warisnya dari ayah?</span>
+                        <svg class="faq-chevron w-5 h-5 text-emerald-400 flex-shrink-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-5 pb-5">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                <strong class="text-white">Tidak. Perceraian sama sekali tidak memutus hak waris anak
+                                    dari ayahnya.</strong> Hubungan nasab (keturunan) antara ayah dan anak adalah
+                                hubungan yang bersifat permanen dan tidak dapat diputus oleh perceraian, pernikahan
+                                ulang salah satu orang tua, atau alasan apapun.
+                            </p>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                Berdasarkan ilmu faraid (hukum waris Islam), anak kandung — baik laki-laki maupun
+                                perempuan — termasuk dalam kategori <em>ashhabul furudh</em> (ahli waris yang
+                                mendapatkan bagian tetap yang telah ditentukan Al-Qur'an). Bagian waris anak tidak
+                                terpengaruh oleh status pernikahan atau perceraian orang tuanya.
+                            </p>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Yang mungkin terdampak bukan hak waris, melainkan <strong class="text-white">hak
+                                    hadhanah (pengasuhan)</strong> — di mana anak di bawah 12 tahun biasanya diasuh ibu,
+                                namun biaya hidup dan pendidikan tetap menjadi tanggung jawab ayah. Sementara hak waris
+                                sepenuhnya tetap ada dan terlindungi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item rounded-b-xl overflow-hidden" onclick="toggleFaq(this)">
+                    <button
+                        class="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/3 transition-colors">
+                        <span class="font-semibold text-white text-sm sm:text-base">Berapa lama proses cerai di
+                            Pengadilan Agama dan berapa biayanya?</span>
+                        <svg class="faq-chevron w-5 h-5 text-emerald-400 flex-shrink-0" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-5 pb-5">
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                Durasi proses perceraian di Pengadilan Agama (PA) Indonesia bervariasi, umumnya berkisar
+                                <strong class="text-white">2–6 bulan</strong> jika berjalan lancar tanpa komplikasi.
+                                Beberapa faktor yang memengaruhi durasi:
+                            </p>
+                            <div class="space-y-1 mb-3 text-xs text-slate-400">
+                                <p>• Apakah tergugat/termohon kooperatif hadir di persidangan</p>
+                                <p>• Kompleksitas sengketa (apakah ada perebutan hak asuh anak atau harta gono-gini)</p>
+                                <p>• Beban perkara di PA setempat</p>
+                                <p>• Apakah ada upaya banding setelah putusan</p>
+                            </div>
+                            <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                                Terkait <strong class="text-white">biaya perkara</strong>, setiap PA memiliki standar
+                                biaya yang berbeda. Secara umum, biaya pendaftaran perkara cerai berkisar antara Rp.
+                                300.000 – Rp. 1.000.000 untuk panjar biaya (tergantung lokasi PA dan jarak pemanggilan).
+                                Bagi pihak yang tidak mampu secara ekonomi, tersedia layanan <strong
+                                    class="text-white">Prodeo</strong> (beracara secara cuma-cuma/gratis) dengan
+                                melampirkan Surat Keterangan Tidak Mampu (SKTM) dari kelurahan setempat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ╔══════════════════════╗ -->
+    <!-- ║  HALAMAN 7: PROFIL  ║ -->
+    <!-- ╚══════════════════════╝ -->
+    <section id="page-profil" class="page-section">
+        <div class="pt-24 pb-20 max-w-4xl mx-auto px-4 sm:px-6">
+
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Profil <span class="gradient-text">Penulis</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 reveal">
+
+                <!-- Profile Card -->
+                <div class="md:col-span-1">
+                    <div class="info-card text-center sticky top-24">
+                        <div
+                            class="relative w-28 h-28 mx-auto mb-5 rounded-full p-1
+                                bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500">
+
+                            <div class="w-full h-full rounded-full overflow-hidden bg-slate-900">
+                                <img
+                                    src="profil.jpeg"
+                                    alt="Foto Profil"
+                                    class="w-full h-full object-cover object-center transition duration-500 hover:scale-110">
+                            </div>
+                        </div>
+                        <h3 class="font-bold text-white text-lg mb-1">Nur Sukma Sabrina</h3>
+                        <p class="text-emerald-400 text-sm font-medium mb-1">Mahasiswa Hukum Keluarga Islam</p>
+                        <p class="text-slate-500 text-xs mb-4">NIM: 182624554</p>
+
+                        <!-- Social Buttons -->
+                        <div class="space-y-3">
+                            <a href="https://www.instagram.com/sukmasabrinaaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener"
+                                class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/25 hover:-translate-y-0.5">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                                Instagram
+                            </a>
+                            <a href="mailto:sukmasabrina5@gamil.com" target="_blank" rel="noopener"
+                                class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 hover:-translate-y-0.5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="md:col-span-2 space-y-6">
+
+                    <!-- Akademik -->
+                    <div class="info-card">
+                        <h4 class="text-emerald-400 font-bold mb-4 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 14l9-5-9-5-9 5 9 5z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                            </svg>
+                            Informasi Akademik
+                        </h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">Institut Agama Islam Negeri (IAIN) Datuk
+                                        Laksemana Bengkalis</p>
+                                    <p class="text-slate-400 text-xs">Perguruan Tinggi Keagamaan Islam Negeri —
+                                        Bengkalis, Riau</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-white text-sm font-semibold">Program Studi: Hukum Keluarga Islam</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Maps -->
+                    <div class="info-card">
+                        <h4 class="text-emerald-400 font-bold mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Lokasi Institusi
+                        </h4>
+                        <p class="text-slate-400 text-xs mb-3">Jl. Lembaga, Senggoro, Bengkalis, Kabupaten Bengkalis, Riau
+                            28711</p>
+                        <div class="maps-wrapper">
+                            <iframe
+                                class="w-full h-64 rounded-xl"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4735061268275!2d102.13133817501362!3d1.487662498498374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d1610054864a1f%3A0x46724ddc15184493!2sIAIN%20DATUK%20LAKSEMANA%20BENGKALIS!5e0!3m2!1sid!2sid!4v1782645976818!5m2!1sid!2sid"
+                                style="border:0;"
+                                width="100%"
+                                height="300"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="strict-origin-when-cross-origin">
+                            </iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ╔══════════════════════╗ -->
+    <!-- ║      FOOTER          ║ -->
+    <!-- ╚══════════════════════╝ -->
+    <footer class="border-t border-slate-800/60 py-8 text-center">
+        <p class="text-slate-500 text-sm">
+            © 2026 Edukasi Hukum Perceraian Islam — IAIN Datuk Laksemana Bengkalis
+        </p>
+        <p class="text-slate-600 text-xs mt-1">
+            Konten ini disusun untuk keperluan edukasi dan literasi hukum. Bukan merupakan konsultasi hukum formal.
+        </p>
+    </footer>
+
+
+    <!-- ╔══════════════════════════════╗ -->
+    <!-- ║      VANILLA JAVASCRIPT      ║ -->
+    <!-- ╚══════════════════════════════╝ -->
+    <script>
+        // ===================================================
+        // 1. TAB / PAGE NAVIGATION
+        // ===================================================
+        function showPage(pageId) {
+            // Hide all sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Update desktop nav link states
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Update mobile nav link states
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top of page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Trigger reveal animations for the new page
+            setTimeout(() => {
+                triggerReveal();
+            }, 100);
+        }
+
+        // ===================================================
+        // 2. NAVBAR SCROLL EFFECT
+        // ===================================================
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===================================================
+        // 3. MOBILE HAMBURGER MENU
+        // ===================================================
+        const hamBtn = document.getElementById('ham-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            hamBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            hamBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+        }
+
+        // ===================================================
+        // 4. ARTICLE "SPLIT OPEN" ANIMATION
+        //    Toggles the 'open' class which triggers CSS transitions
+        // ===================================================
+        function toggleArticle(card) {
+            const isOpen = card.classList.contains('open');
+
+            // Close all open articles first for accordion behavior
+            // (comment out below 3 lines if you want multiple open)
+            document.querySelectorAll('.article-card.open').forEach(c => {
+                if (c !== card) c.classList.remove('open');
+            });
+
+            // Toggle current card
+            card.classList.toggle('open', !isOpen);
+        }
+
+        // ===================================================
+        // 5. FAQ ACCORDION
+        //    Smooth slide-down with max-height transition
+        // ===================================================
+        function toggleFaq(item) {
+            const isOpen = item.classList.contains('open');
+
+            // Close all open FAQs
+            document.querySelectorAll('.faq-item.open').forEach(f => {
+                f.classList.remove('open');
+            });
+
+            // Open clicked if it was closed
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // ===================================================
+        // 6. SCROLL REVEAL ANIMATIONS
+        //    IntersectionObserver for elegant fade-in
+        // ===================================================
+        function triggerReveal() {
+            const reveals = document.querySelectorAll('.page-section.active .reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Stagger the animations
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 80);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+            reveals.forEach(el => {
+                // Reset if re-entering page
+                el.classList.remove('visible');
+                observer.observe(el);
+            });
+        }
+
+        // ===================================================
+        // 7. HERO PARALLAX EFFECT (subtle)
+        // ===================================================
+        const heroBg = document.getElementById('hero-bg');
+        if (heroBg) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const viewportH = window.innerHeight;
+                if (scrolled < viewportH) {
+                    heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+            }, { passive: true });
+        }
+
+        // ===================================================
+        // 8. INITIALIZATION
+        // ===================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Close mobile menu on outside click
+            document.addEventListener('click', (e) => {
+                if (!navbar.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Trigger initial reveal for beranda
+            triggerReveal();
+
+            // Also observe on scroll for beranda
+            const beranda = document.getElementById('page-beranda');
+            if (beranda) {
+                const berandaObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                beranda.querySelectorAll('.reveal').forEach(el => {
+                    berandaObserver.observe(el);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
